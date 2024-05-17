@@ -1,10 +1,11 @@
 import axios from 'axios'
 import { ACCESS_TOKEN } from './constant'
 
-const api  = axios.create({
-    baseURL: import.meta.env.VITE_API_URL
-})
+const apiUrl = "/choreo-apis/djangoreactfullstackapp/backend/rest-api-be2/v1";
 
+const api = axios.create({
+    baseURL: import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : apiUrl,
+});
 api.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem(ACCESS_TOKEN);
